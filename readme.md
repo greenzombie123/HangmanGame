@@ -22,14 +22,40 @@ Model
 
 ```javascript
 
+class DictionaryAPI{
+    constructor(){}
+}
+
 class Model{
-    constructor(){
+    constructor(dictionary){
         this.word = null;
         this.numberOfMistakes = null;
         this.limitOfMistakes = null;
-        this.previousGuess = null;
         this.letters = [];
+        this.gameStatus = null;
+        this.dictionary = dictionary;
     }
+
+    // Get word from API and set to word property
+    fetchWord(){}
+
+    // Insert letters of word into letters prop
+    setLetters(){}
+
+    // 
+    setNumOfMistakes(){}
+
+    //
+    setLimitOfMistakes(){}
+
+    //
+    removeLetter(){}
+
+    //
+    setGameStatus(){}
+
+    //
+    reset(){}
 }
 
 ```
@@ -102,16 +128,24 @@ View
 
 class Controller{
     constructor(){
-
+        this.tiles;
+        this.canvas;
+        this.startButton;
+        this.guessButton;
+        this.restartButton;
     }
 
+    createElement(){}
+    getElement(){}
+
     renderTiles(){}
+
+    renderLetters(){}
+
+    resetTitles(){}
     
     renderBodyPart(){}
 
-    resetScreen(){}
-
-    renderLetters(){}
 
     chooseLetter(){}
     
