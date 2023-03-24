@@ -1,11 +1,6 @@
 import Dictionary from "./modules/Dictionary";
 import Model from "./modules/Model";
+// import { createElement, getElement } from "./modules/Helpers";
 
 const model = new Model(Dictionary)
-
-model.fetchWord()
-model.setLetters()
-model.setNumOfMistakes()
-model.removeLetter("w")
-
 console.log(model);
