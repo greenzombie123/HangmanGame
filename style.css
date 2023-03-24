@@ -1,27 +1,41 @@
+html{
+  font-size: 16px
+}
+
+html *{
+  box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
   }
   
-  #game-container {
+  .game-container {
     width: 600px;
     margin: 0 auto;
     text-align: center;
     transition: background-color 0.5s ease;
   }
   
-  #game-container.correct {
+  .game-container.correct {
     background-color: green;
   }
   
-  #game-container.incorrect {
+  .game-container.incorrect {
     background-color: red;
   }
   
   h1 {
     font-size: 36px;
   }
+
+  .canvas {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 10rem;
+  }
   
-  #word-container {
+  .word-container {
     margin-top: 50px;
     margin-bottom: 20px;
     font-size: 36px;
@@ -29,20 +43,35 @@ body {
     justify-content: center;
   }
   
-  #word-container div {
+  .word-container__tile {
     width: 50px;
     height: 50px;
     border-bottom: 5px solid black;
     margin-right: 10px;
   }
   
-  #keyboard-container {
+  .keyboard-container {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-flow: column wrap;
+    align-items: center;
+    width: 100%;
     margin-bottom: 50px;
   }
   
+  .keyboard-container__row {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-bottom: 10px;
+  }
+
+  .keyboard-container__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    font-size: 1.5rem;
+  }
+
   .key {
     width: 50px;
     height: 50px;
@@ -89,7 +118,7 @@ body {
     cursor: pointer;
   }
   
-  #start-button {
+  .start-button {
     padding: 10px 20px;
     border-radius: 5px;
     border: none;
@@ -100,6 +129,6 @@ body {
     cursor: pointer;
   }
   
-  #start-button:hover {
+  .start-button:hover {
     background-color: #0062cc;
   }

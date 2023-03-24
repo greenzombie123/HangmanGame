@@ -2,19 +2,54 @@
 <html>
   <head>
     <title>Hangman Game</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../style.css" />
   </head>
   <body>
-    <div id="game-container">
+    <div class="game-container">
       <h1>Hangman Game</h1>
-      <div id="word-container"></div>
-      <div id="keyboard-container"></div>
+      <canvas class="class"></canvas>
+      <div class="word-container"></div>
+        
       <form>
         <label for="guess-input">Enter your guess:</label>
-        <input type="text" id="guess-input" name="guess">
-        <button type="submit" id="guess-button">Guess</button>
+        <input type="text" class="guess-input" name="guess" />
+        <button type="submit" clas="guess-button">Guess</button>
       </form>
-      <button id="start-button">Start</button>
+      <div class="keyboard-container">
+        <div class="keyboard-container__row">
+          <button class="keyboard-container__button">Q</button>
+          <button class="keyboard-container__button">W</button>
+          <button class="keyboard-container__button">E</button>
+          <button class="keyboard-container__button">R</button>
+          <button class="keyboard-container__button">T</button>
+          <button class="keyboard-container__button">Y</button>
+          <button class="keyboard-container__button">U</button>
+          <button class="keyboard-container__button">I</button>
+          <button class="keyboard-container__button">O</button>
+          <button class="keyboard-container__button">P</button>
+        </div>
+        <div class="keyboard-container__row">
+          <button class="keyboard-container__button">A</button>
+          <button class="keyboard-container__button">S</button>
+          <button class="keyboard-container__button">D</button>
+          <button class="keyboard-container__button">F</button>
+          <button class="keyboard-container__button">G</button>
+          <button class="keyboard-container__button">H</button>
+          <button class="keyboard-container__button">J</button>
+          <button class="keyboard-container__button">K</button>
+          <button class="keyboard-container__button">L</button>
+        </div>
+        <div class="keyboard-container__row">
+          <button class="keyboard-container__button">Z</button>
+          <button class="keyboard-container__button">X</button>
+          <button class="keyboard-container__button">C</button>
+          <button class="keyboard-container__button">V</button>
+          <button class="keyboard-container__button">B</button>
+          <button class="keyboard-container__button">N</button>
+          <button class="keyboard-container__button">M</button>
+        </div>
+      </div>
+      <button class="start-button">Start</button>
     </div>
     <script src="main.js"></script>
   </body>
