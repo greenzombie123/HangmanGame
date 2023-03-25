@@ -32,7 +32,9 @@ body {
   .canvas {
     margin-top: 20px;
     margin-bottom: 20px;
-    height: 10rem;
+    /* height: 300px;
+    width: 600px; */
+    border: 1px solid black
   }
   
   .word-container {
