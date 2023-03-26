@@ -25,39 +25,55 @@ export default class View {
     });
   }
 
-  printWord(){
-    this.tiles.forEach(tile=>{
-        tile.textContent = tile.dataset.letter 
-    })
+  printWord() {
+    this.tiles.forEach((tile) => {
+      tile.textContent = tile.dataset.letter;
+    });
   }
+
+  bindOnTileButtonsClicked = (handler) => {
+    const buttons = document.querySelectorAll(".keyboard-container__button");
+    buttons.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        handler(e);
+        this.disableButton(e);
+      });
+    });
+  };
 
   async flashRed() {
     document.body.classList.toggle("redFlash");
-    await new Promise((resolve) => {setTimeout(() => resolve(), 2000)});
+    await new Promise((resolve) => {
+      setTimeout(() => resolve(), 2000);
+    });
     document.body.classList.toggle("redFlash");
   }
 
   async flashGreen() {
     document.body.classList.toggle("greenFleash");
-    await new Promise((resolve) => {setTimeout(() => resolve(), 2000)});
+    await new Promise((resolve) => {
+      setTimeout(() => resolve(), 2000);
+    });
     document.body.classList.toggle("greenFleash");
   }
 
-  disableButton({currentTarget}){
+  disableButton({ currentTarget }) {
     const button = currentTarget;
     button.disabled = true;
   }
 
-  enableAllButtons(){
-    const buttons = document.querySelectorAll('.keyboard-container__button')
-    buttons.forEach(button=> {button.disabled = false})
+  enableAllButtons() {
+    const buttons = document.querySelectorAll(".keyboard-container__button");
+    buttons.forEach((button) => {
+      button.disabled = false;
+    });
   }
 
-  renderBodyPart(){
-    this.hangman.drawBodyPart()
+  renderBodyPart() {
+    this.hangman.drawBodyPart();
   }
 
-  init(){
-    this.hangman.draw()
+  init() {
+    this.hangman.draw();
   }
 }
