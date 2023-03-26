@@ -13,8 +13,32 @@ export default class Hangman {
     ctx.translate(150, 0);
 
     this.drawHanger();
+  }
 
-    this.animateRightArm();
+  drawBodyPart() {
+    this.numOfBodyParts += 1;
+    switch (this.numOfBodyParts) {
+      case 1:
+        this.animateHead()
+        break;
+      case 2:
+        this.animateBody()
+        break;
+      case 3:
+        this.animateLeftLeg()
+        break;
+      case 4:
+        this.animateRightLeg()
+        break;
+      case 5:
+        this.animateLeftArm()
+        break;
+      case 6:
+        this.animateRightArm()
+        break;
+      default:
+        break;
+    }
   }
 
   drawHanger() {

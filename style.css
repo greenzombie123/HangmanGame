@@ -1,5 +1,6 @@
 html {
   font-size: 16px;
+  height: 100vh;
 }
 
 html * {
@@ -57,7 +58,7 @@ h1 {
   flex-flow: column wrap;
   align-items: center;
   width: 100%;
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
 }
 
 .keyboard-container__row {
@@ -127,7 +128,7 @@ form button {
   background-color: #007bff;
   color: white;
   font-size: 24px;
-  margin-top: 50px;
+  margin-top: 10px;
   cursor: pointer;
 }
 

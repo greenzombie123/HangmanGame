@@ -5,8 +5,7 @@ export default class View {
     this.hangman = hangman;
     this.tile_container = getElement("tile-container");
     this.tiles = [];
-
-    // document.querySelector('.keyboard-container__button').addEventListener('click', this.disableButton)
+    this.counter = 0;
   }
 
   // Get length of the word
@@ -31,6 +30,12 @@ export default class View {
     });
   }
 
+  printWord(){
+    this.tiles.forEach(tile=>{
+        tile.textContent = tile.dataset.letter 
+    })
+  }
+
   async flashRed() {
     document.body.classList.toggle("redFlash");
     await new Promise((resolve) => {setTimeout(() => resolve(), 2000)});
@@ -51,5 +56,13 @@ export default class View {
   enableAllButtons(){
     const buttons = document.querySelectorAll('.keyboard-container__button')
     buttons.forEach(button=> {button.disabled = false})
+  }
+
+  renderBodyPart(){
+    this.hangman.drawBodyPart()
+  }
+
+  init(){
+    this.hangman.draw()
   }
 }
