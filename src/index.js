@@ -11,3 +11,4 @@ const model = new Model(Dictionary)
 console.log(model);
 view.createTiles()
 view.addLetters('a')
+view.flashRed()

@@ -28,4 +28,16 @@ export default class View {
       if (tile.dataset.letter === letter) tile.textContent = letter;
     });
   }
+
+  async flashRed() {
+    document.body.classList.toggle("redFlash");
+    await new Promise((resolve) => {setTimeout(() => resolve(), 2000)});
+    document.body.classList.toggle("redFlash");
+  }
+
+  async flashGreen() {
+    document.body.classList.toggle("greenFleash");
+    await new Promise((resolve) => {setTimeout(() => resolve(), 2000)});
+    document.body.classList.toggle("greenFleash");
+  }
 }
