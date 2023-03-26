@@ -10,9 +10,21 @@ export default class Model{
     }
 
     // Get word from API and set to word property
-    fetchWord(){
-        this.word = this.dictionary.fetchWord()
+    async fetchWord(){
+        this.word = await this.dictionary.fetchWord()
+        this.setLetters()
+        console.log(this.letters);
+        this.onWordRetrieved()
     }
+
+    getWord(){
+        return this.word
+    }
+
+    bindOnWordRetrieved(callback){
+        this.onWordRetrieved = callback
+    }
+
 
     // Insert letters of word into letters prop
     setLetters(){

@@ -8,17 +8,17 @@ const config = {
   };
 
 async function fetchWord() {
-  //   const wordlist = ["word", "apple", "dictionary"];
-  //   const wordlist = ["word"];
-  //   const num = Math.floor(Math.random() * wordlist.length);
-  //   return wordlist[num];
+    
   try {
-    let word = await fetch(
-        // "https://api.api-ninjas.com/v1/randomword",
-        // config
-    );
-    word = await word.json();
-    return word;
+    const wordlist = ["word", "apple", "dictionary"];
+    const num = Math.floor(Math.random() * wordlist.length);
+    return wordlist[num];
+    // let word = await fetch(
+    //     "https://api.api-ninjas.com/v1/randomword",
+    //     config
+    // );
+    // word = await word.json();
+    // return word.word;
   } catch (error) {
     console.log(error);
   }

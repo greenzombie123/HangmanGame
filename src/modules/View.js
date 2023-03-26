@@ -9,12 +9,7 @@ export default class View {
   }
 
   // Get length of the word
-  getWord() {
-    return "banana";
-  }
-
-  createTiles() {
-    const word = this.getWord();
+  createTiles(word) {
     for (let index = 0; index < word.length; index++) {
       const tile = createElement("div", "tile-container__tile");
       tile.dataset.letter = word[index];
