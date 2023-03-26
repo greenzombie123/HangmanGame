@@ -12,5 +12,7 @@ console.log(model);
 view.createTiles()
 view.init()
 view.printWord()
+const word = model.dictionary.fetchWord()
+// console.log(word);
 // view.addLetters('a')
 // view.flashRed()
