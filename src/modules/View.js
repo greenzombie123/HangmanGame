@@ -5,8 +5,6 @@ export default class View {
     this.hangman = hangman;
     this.tile_container = getElement("tile-container");
     this.tiles = [];
-    this.counter = 0;
-    this.timerID = null;
     this.animatedElement = null;
   }
 
@@ -100,6 +98,12 @@ export default class View {
 
   renderBodyPart() {
     this.hangman.drawBodyPart();
+  }
+
+  reset(){
+    this.tiles.forEach(tile=> this.tile_container.removeChild(tile))
+    this.tiles = []
+    this.animatedElement = null;
   }
 
   init() {

@@ -49,6 +49,11 @@ export default class Model{
         this.gameStatus = status
     }
 
+    init(){
+        this.setNumOfMistakes() 
+        this.fetchWord()
+    }
+
     // Resets values of properties of model
     reset(){
         this.word = null;

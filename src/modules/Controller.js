@@ -36,17 +36,23 @@ export default class Controller {
 
   guessWord = (word) => {
     if (this.checkWord(word)) {
-      console.log("Wow!");
+      this.view.printWord();
+      this.view.flashGreen();
     } else {
-        console.log("Loseer!");
+      this.view.flashRed();
+      this.view.renderBodyPart();
     }
   };
+
+  startNewGame(){
+
+  }
 
   init() {
     this.model.bindOnWordRetrieved(this.getWord);
     this.view.bindOnTileButtonsClicked(this.guessLetter);
     this.view.bindOnWordButtonClicked(this.guessWord);
     this.view.init();
-    this.model.fetchWord();
+    this.model.init();
   }
 }
