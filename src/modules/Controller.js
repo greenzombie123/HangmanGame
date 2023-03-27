@@ -14,6 +14,11 @@ export default class Controller {
     return this.model.letters.some((letter) => letter === chosenLetter);
   }
 
+  checkWord(word) {
+    console.log(word);
+    return this.model.word === word.toLowerCase();
+  }
+
   guessLetter = (e) => {
     const {
       currentTarget: { textContent },
@@ -22,16 +27,25 @@ export default class Controller {
     if (this.checkletter(letter)) {
       this.model.removeLetter(letter);
       this.view.addLetters(letter);
-      this.view.flashGreen()
+      this.view.flashGreen();
     } else {
       this.view.flashRed();
-      this.view.renderBodyPart()
+      this.view.renderBodyPart();
+    }
+  };
+
+  guessWord = (word) => {
+    if (this.checkWord(word)) {
+      console.log("Wow!");
+    } else {
+        console.log("Loseer!");
     }
   };
 
   init() {
     this.model.bindOnWordRetrieved(this.getWord);
     this.view.bindOnTileButtonsClicked(this.guessLetter);
+    this.view.bindOnWordButtonClicked(this.guessWord);
     this.view.init();
     this.model.fetchWord();
   }

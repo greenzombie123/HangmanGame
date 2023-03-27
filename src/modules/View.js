@@ -46,9 +46,9 @@ export default class View {
   // TODO Finish implementation
   bindOnWordButtonClicked = (handler) => {
     const button = getElement("guess-button");
-    button.addEventListener("click", (e) => {
-      const input = document.querySelector("input");
-      handler(input.textContent);
+    const input = document.querySelector(".guess-input");
+    button.addEventListener("click", () => {
+      handler(input.value);
     });
   };
 
