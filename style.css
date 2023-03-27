@@ -12,6 +12,7 @@ body {
 }
 
 .game-container {
+  position: relative;
   width: 600px;
   margin: 0 auto;
   text-align: center;
@@ -24,6 +25,10 @@ body {
 
 .game-container.incorrect {
   background-color: red;
+}
+
+.startNewGame-display{
+  display: none;
 }
 
 h1 {
@@ -144,7 +149,7 @@ form button {
 
 @keyframes red {
   from {
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.346);
   }
 
   to {
@@ -160,7 +165,7 @@ form button {
 
 @keyframes green {
   from {
-    background-color: greenyellow;
+    background-color: rgba(2, 214, 2, 0.533);
   }
 
   to {

@@ -6,6 +6,8 @@ export default class View {
     this.tile_container = getElement("tile-container");
     this.tiles = [];
     this.counter = 0;
+    this.timerID = null;
+    this.animatedElement = null;
   }
 
   // Get length of the word
@@ -41,20 +43,47 @@ export default class View {
     });
   };
 
-  async flashRed() {
-    document.body.classList.toggle("redFlash");
-    await new Promise((resolve) => {
-      setTimeout(() => resolve(), 2000);
+  // TODO Finish implementation
+  bindOnWordButtonClicked = (handler) => {
+    const button = getElement("guess-button");
+    button.addEventListener("click", (e) => {
+      const input = document.querySelector("input");
+      handler(input.textContent);
     });
-    document.body.classList.toggle("redFlash");
+  };
+
+  flashRed() {
+    if (this.animatedElement) {
+      if (this.animatedElement.currentTime) this.animatedElement.cancel();
+    }
+    const animation = [
+      {
+        backgroundColor: "rgba(255, 0, 0, 0.346)",
+      },
+
+      {
+        backgroundColor: "white",
+      },
+    ];
+    const animationTime = { duration: 1000 };
+    this.animatedElement = document.body.animate(animation, animationTime);
   }
 
-  async flashGreen() {
-    document.body.classList.toggle("greenFleash");
-    await new Promise((resolve) => {
-      setTimeout(() => resolve(), 2000);
-    });
-    document.body.classList.toggle("greenFleash");
+  flashGreen() {
+    if (this.animatedElement) {
+      if (this.animatedElement.currentTime) this.animatedElement.cancel();
+    }
+    const animation = [
+      {
+        backgroundColor: "rgba(2, 214, 2, 0.533)",
+      },
+
+      {
+        backgroundColor: "white",
+      },
+    ];
+    const animationTime = { duration: 1000 };
+    this.animatedElement = document.body.animate(animation, animationTime);
   }
 
   disableButton({ currentTarget }) {

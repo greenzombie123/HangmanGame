@@ -41,6 +41,7 @@ export default class Model{
     // Remove a letter from letters prop
     removeLetter(letter){
         this.letters = this.letters.filter(item => item !== letter)
+        console.log(this.letters);
     }
 
     // Set value to gameStatus prop

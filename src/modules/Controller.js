@@ -15,14 +15,18 @@ export default class Controller {
   }
 
   guessLetter = (e) => {
-    // {currentTarget:{dataset:{letter}}}
     const {
       currentTarget: { textContent },
     } = e;
     const letter = textContent.toLowerCase();
-    console.log(letter);
-    if (this.checkletter(letter)) console.log("Nice");
-    else console.log("failed!");
+    if (this.checkletter(letter)) {
+      this.model.removeLetter(letter);
+      this.view.addLetters(letter);
+      this.view.flashGreen()
+    } else {
+      this.view.flashRed();
+      this.view.renderBodyPart()
+    }
   };
 
   init() {
