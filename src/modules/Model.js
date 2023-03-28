@@ -56,7 +56,7 @@ export default class Model {
   setGameStatus(status) {
     this.gameStatus = status;
 
-    this.onGameStatusUpdated(this.gameStatus)
+    this.onGameStatusUpdated(this.gameStatus);
   }
 
   init() {

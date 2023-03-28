@@ -41,24 +41,25 @@ export default class Controller {
     if (this.checkWord(word)) {
       this.view.printWord();
       this.view.flashGreen();
+      this.checkWinner(true);
     } else {
       this.view.flashRed();
       this.view.renderBodyPart();
+      this.checkLoser()
     }
   };
 
   checkWinner(isWordCorrect = false) {
     const { letters } = this.model;
     if (!letters.length || isWordCorrect) {
-      this.model.setGameStatus("Winner");
+      this.model.setGameStatus(true);
     }
   }
 
   checkLoser() {
     const { numberOfMistakes, limitOfMistakes } = this.model;
-    console.log(numberOfMistakes, limitOfMistakes);
     if (numberOfMistakes === limitOfMistakes) {
-      this.model.setGameStatus("Loser");
+      this.model.setGameStatus(false);
     }
   }
 
