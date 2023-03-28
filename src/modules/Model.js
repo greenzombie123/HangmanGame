@@ -3,7 +3,8 @@
 export default class Model{
     constructor(dictionary){
         this.word = null;
-        this.numberOfMistakes = null;
+        this.numberOfMistakes = 0;
+        this.limitOfMistakes = 6
         this.letters = [];
         this.gameStatus = null;
         this.dictionary = dictionary;
@@ -34,8 +35,12 @@ export default class Model{
     }
 
     // Set number of mistakes
-    setNumOfMistakes(){
-        this.numberOfMistakes = 6;
+    setLimitofMistakes(number){
+        this.limitOfMistakes = number;
+    }
+
+    increaseNumOfMistakes(){
+        this.numberOfMistakes += 1
     }
 
     // Remove a letter from letters prop
@@ -50,7 +55,7 @@ export default class Model{
     }
 
     init(){
-        this.setNumOfMistakes() 
+        this.setLimitofMistakes(6) 
         this.fetchWord()
     }
 

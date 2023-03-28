@@ -28,9 +28,12 @@ export default class Controller {
       this.model.removeLetter(letter);
       this.view.addLetters(letter);
       this.view.flashGreen();
+      this.checkWinner()
     } else {
       this.view.flashRed();
       this.view.renderBodyPart();
+      this.model.increaseNumOfMistakes()
+      this.checkLoser()
     }
   };
 
@@ -43,6 +46,23 @@ export default class Controller {
       this.view.renderBodyPart();
     }
   };
+
+  checkWinner(isWordCorrect = false){
+    const {letters} = this.model
+    if(!letters.length || isWordCorrect){
+        this.model.setGameStatus('Winner')
+        console.log(this.model.gameStatus);
+    }
+  }
+
+  checkLoser(){
+    const {numberOfMistakes, limitOfMistakes} = this.model
+    console.log(numberOfMistakes, limitOfMistakes);
+    if(numberOfMistakes === limitOfMistakes){
+        this.model.setGameStatus("Loser")
+        console.log('YOu are a ' + this.model.gameStatus);
+    }
+  }
 
   startNewGame(){
 
