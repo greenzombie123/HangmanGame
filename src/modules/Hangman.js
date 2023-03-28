@@ -335,6 +335,10 @@ export default class Hangman {
     const canvas = getElement("canvas");
     const ctx = canvas.getContext("2d");
 
+    ctx.clearRect(0, 0, 300, 600)
+
+    this.drawHanger()
+
     ctx.translate(-100, 0);
 
     // Head
