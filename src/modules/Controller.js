@@ -28,12 +28,12 @@ export default class Controller {
       this.model.removeLetter(letter);
       this.view.addLetters(letter);
       this.view.flashGreen();
-      this.checkWinner()
+      this.checkWinner();
     } else {
       this.view.flashRed();
       this.view.renderBodyPart();
-      this.model.increaseNumOfMistakes()
-      this.checkLoser()
+      this.model.increaseNumOfMistakes();
+      this.checkLoser();
     }
   };
 
@@ -47,29 +47,30 @@ export default class Controller {
     }
   };
 
-  checkWinner(isWordCorrect = false){
-    const {letters} = this.model
-    if(!letters.length || isWordCorrect){
-        this.model.setGameStatus('Winner')
-        console.log(this.model.gameStatus);
+  checkWinner(isWordCorrect = false) {
+    const { letters } = this.model;
+    if (!letters.length || isWordCorrect) {
+      this.model.setGameStatus("Winner");
     }
   }
 
-  checkLoser(){
-    const {numberOfMistakes, limitOfMistakes} = this.model
+  checkLoser() {
+    const { numberOfMistakes, limitOfMistakes } = this.model;
     console.log(numberOfMistakes, limitOfMistakes);
-    if(numberOfMistakes === limitOfMistakes){
-        this.model.setGameStatus("Loser")
-        console.log('YOu are a ' + this.model.gameStatus);
+    if (numberOfMistakes === limitOfMistakes) {
+      this.model.setGameStatus("Loser");
     }
   }
 
-  startNewGame(){
-
+  onGameStatusUpdated = (isWinner) => {
+    this.view.displayGameStatus(isWinner)
   }
+
+  startNewGame() {}
 
   init() {
     this.model.bindOnWordRetrieved(this.getWord);
+    this.model.bindOnGameStatusUpdated(this.onGameStatusUpdated);
     this.view.bindOnTileButtonsClicked(this.guessLetter);
     this.view.bindOnWordButtonClicked(this.guessWord);
     this.view.init();

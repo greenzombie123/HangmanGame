@@ -1,69 +1,74 @@
 // import Dictionary from "./Dictionary";
 
-export default class Model{
-    constructor(dictionary){
-        this.word = null;
-        this.numberOfMistakes = 0;
-        this.limitOfMistakes = 6
-        this.letters = [];
-        this.gameStatus = null;
-        this.dictionary = dictionary;
-    }
+export default class Model {
+  constructor(dictionary) {
+    this.word = null;
+    this.numberOfMistakes = 0;
+    this.limitOfMistakes = 6;
+    this.letters = [];
+    this.gameStatus = null;
+    this.dictionary = dictionary;
+  }
 
-    // Get word from API and set to word property
-    async fetchWord(){
-        this.word = await this.dictionary.fetchWord()
-        this.setLetters()
-        console.log(this.letters);
-        this.onWordRetrieved()
-    }
+  // Get word from API and set to word property
+  async fetchWord() {
+    this.word = await this.dictionary.fetchWord();
+    this.setLetters();
+    console.log(this.letters);
+    this.onWordRetrieved();
+  }
 
-    getWord(){
-        return this.word
-    }
+  getWord() {
+    return this.word;
+  }
 
-    bindOnWordRetrieved(callback){
-        this.onWordRetrieved = callback
-    }
+  bindOnWordRetrieved(callback) {
+    this.onWordRetrieved = callback;
+  }
 
+  bindOnGameStatusUpdated(callback) {
+    this.onGameStatusUpdated = callback;
+  }
 
-    // Insert letters of word into letters prop
-    setLetters(){
-        for (let index = 0; index < this.word.length; index++) {
-            this.letters.push(this.word.charAt(index))
-        }
+  // Insert letters of word into letters prop
+  setLetters() {
+    for (let index = 0; index < this.word.length; index++) {
+      this.letters.push(this.word.charAt(index));
     }
+  }
 
-    // Set number of mistakes
-    setLimitofMistakes(number){
-        this.limitOfMistakes = number;
-    }
+  // Set number of mistakes
+  setLimitofMistakes(number) {
+    this.limitOfMistakes = number;
+  }
 
-    increaseNumOfMistakes(){
-        this.numberOfMistakes += 1
-    }
+  increaseNumOfMistakes() {
+    this.numberOfMistakes += 1;
+  }
 
-    // Remove a letter from letters prop
-    removeLetter(letter){
-        this.letters = this.letters.filter(item => item !== letter)
-        console.log(this.letters);
-    }
+  // Remove a letter from letters prop
+  removeLetter(letter) {
+    this.letters = this.letters.filter((item) => item !== letter);
+    console.log(this.letters);
+  }
 
-    // Set value to gameStatus prop
-    setGameStatus(status){
-        this.gameStatus = status
-    }
+  // Set value to gameStatus prop
+  setGameStatus(status) {
+    this.gameStatus = status;
 
-    init(){
-        this.setLimitofMistakes(6) 
-        this.fetchWord()
-    }
+    this.onGameStatusUpdated(this.gameStatus)
+  }
 
-    // Resets values of properties of model
-    reset(){
-        this.word = null;
-        this.numberOfMistakes = null;
-        this.letters = [];
-        this.gameStatus = null;
-    }
+  init() {
+    this.setLimitofMistakes(6);
+    this.fetchWord();
+  }
+
+  // Resets values of properties of model
+  reset() {
+    this.word = null;
+    this.numberOfMistakes = null;
+    this.letters = [];
+    this.gameStatus = null;
+  }
 }

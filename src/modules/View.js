@@ -6,6 +6,8 @@ export default class View {
     this.tile_container = getElement("tile-container");
     this.tiles = [];
     this.animatedElement = null;
+    this.display = getElement("display");
+    this.displayWords = getElement("display__words");
   }
 
   // Get length of the word
@@ -18,7 +20,6 @@ export default class View {
     }
   }
 
-  //! Fix variable assignment
   addLetters(letter) {
     this.tiles.forEach((tile) => {
       if (tile.dataset.letter === letter) tile.textContent = letter;
@@ -41,7 +42,6 @@ export default class View {
     });
   };
 
-  // TODO Finish implementation
   bindOnWordButtonClicked = (handler) => {
     const button = getElement("guess-button");
     const input = document.querySelector(".guess-input");
@@ -100,10 +100,29 @@ export default class View {
     this.hangman.drawBodyPart();
   }
 
-  reset(){
-    this.tiles.forEach(tile=> this.tile_container.removeChild(tile))
-    this.tiles = []
+  displayGameStatus = (isWinner) => {
+    if (isWinner) {
+      this.hangman.renderWinner();
+    } else {
+    }
+  };
+
+  showDisplayer = (isWinner) => {
+    if (isWinner) {
+      this.display.classList.toggle('display_winner')
+      this.displayWords.textContent = "Good Job!"
+    } else {
+      this.display.classList.toggle('display_loser')
+      this.displayWords.textContent = "Too Bad!"
+    }
+  };
+
+  reset() {
+    this.tiles.forEach((tile) => this.tile_container.removeChild(tile));
+    this.tiles = [];
     this.animatedElement = null;
+    this.display.classList.remove('display_loser')
+    this.display.classList.remove('display_winner')
   }
 
   init() {

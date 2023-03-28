@@ -160,7 +160,7 @@ export default class Hangman {
     const canvas = getElement("canvas");
     const ctx = canvas.getContext("2d");
 
-    // Head
+    // Body
 
     ctx.fillRect(222, 120, 5, 50);
   }
@@ -287,6 +287,7 @@ export default class Hangman {
     const canvas = getElement("canvas");
     const ctx = canvas.getContext("2d");
 
+    // Left Arm
     ctx.fillStyle = "black";
     ctx.fillRect(171, 130, 50, 5);
   }
@@ -325,7 +326,79 @@ export default class Hangman {
     const canvas = getElement("canvas");
     const ctx = canvas.getContext("2d");
 
+    // Right Arm
     ctx.fillStyle = "black";
     ctx.fillRect(227, 140, 50, 5);
+  }
+
+  renderWinner(){
+    const canvas = getElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    ctx.translate(-100, 0);
+
+    // Head
+    ctx.fillStyle = "black";
+    ctx.beginPath();
+    ctx.arc(325, 202, 20, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = "white";
+    ctx.beginPath();
+    ctx.moveTo(220, 101);
+    ctx.arc(325, 202, 18, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = "black";
+    ctx.beginPath();
+    ctx.moveTo(220, 101);
+    ctx.arc(316, 202 - 3, 3, 0, Math.PI * 2);
+    ctx.moveTo(238, 101);
+    ctx.arc(333, 202 - 3, 3, 0, Math.PI * 2);
+    ctx.moveTo(333, 220);
+    ctx.fill();
+
+    // Smile
+    ctx.beginPath();
+    ctx.moveTo(314, 205);
+    ctx.arc(324, 205, 10, 0, Math.PI, false);
+    ctx.stroke();
+
+    // Body
+
+    ctx.fillRect(322, 220, 5, 50);
+
+     // Left Leg
+     ctx.save();
+     ctx.fillStyle = "black";
+     ctx.translate(224.5, 195);
+     ctx.rotate((Math.PI / 180) * 45);
+     ctx.fillRect(120, -20, 5, 50);
+     ctx.restore();
+
+     // Right Leg
+    ctx.save();
+    ctx.fillStyle = "black";
+    ctx.translate(224.5, 195);
+    ctx.rotate((Math.PI / 180) * 135);
+    ctx.fillRect(-23, -169, 5, 50);
+    ctx.restore();
+
+    // Left Arm
+    ctx.save();
+     ctx.fillStyle = "black";
+     ctx.translate(224.5, 195);
+     ctx.rotate((Math.PI / 180) * 45);
+     ctx.fillRect(100, -90, 5, 50);
+     ctx.restore();
+
+
+    // Right Arm
+    ctx.save();
+     ctx.fillStyle = "black";
+     ctx.translate(224.5, 195);
+     ctx.rotate((Math.PI / 180) * 135);
+     ctx.fillRect(-40, -100, 5, 50);
+     ctx.restore();
   }
 }

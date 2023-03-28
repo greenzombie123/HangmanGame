@@ -27,8 +27,30 @@ body {
   background-color: red;
 }
 
-.startNewGame-display{
+.display {
   display: none;
+}
+
+.display_winner {
+  position: absolute;
+  top: 22%;
+  left: 42%;
+  display: block;
+  color: #4df94d;
+}
+
+.display__words {
+  margin: 0rem;
+  font-size: 3rem;
+}
+
+.display_loser {
+  position: absolute;
+  top: 42%;
+  left: 47%;
+  display: block;
+  color: red;
+
 }
 
 h1 {
