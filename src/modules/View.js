@@ -114,9 +114,7 @@ export default class View {
   displayGameStatus = (isWinner) => {
     if (isWinner) {
       this.hangman.renderWinner();
-      this.showDisplayer(isWinner)
     } else {
-      this.showDisplayer(isWinner)
     }
   };
 
