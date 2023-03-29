@@ -119,18 +119,18 @@ h1 {
   cursor: default;
 }
 
-form {
+.input-container {
   display: flex;
   justify-content: center;
   align-items: center; /* added this line */
   margin-bottom: 50px;
 }
 
-form label {
+.input-container label {
   margin-right: 10px;
 }
 
-form input {
+.input-container input {
   margin-right: 10px;
   padding: 5px;
   border-radius: 5px;
@@ -138,7 +138,7 @@ form input {
   font-size: 16px;
 }
 
-form button {
+.input-container button {
   padding: 5px 10px;
   border-radius: 5px;
   border: none;
@@ -161,6 +161,46 @@ form button {
 
 .start-button:hover {
   background-color: #0062cc;
+}
+
+.reset-button {
+  position: relative;
+  display: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: royalblue;
+  color: white;
+  font-size: 24px;
+  margin-top: 10px;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.reset-button_flash{
+  animation-duration: .5s;
+  animation-name: flash;
+  animation-iteration-count: infinite;
+}
+
+.reset-button:hover {
+  background-color: #0062cc;
+}
+
+@keyframes flash {
+  from {
+    background-color: grey;
+  }
+
+  to {
+    background-color: rgb(252, 198, 159);
+  }
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .redFlash {
@@ -193,4 +233,16 @@ form button {
   to {
     background-color: white;
   }
+}
+
+.backdrop{
+  display: none;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+}
+
+.backdrop_open{
+  display: block;
 }

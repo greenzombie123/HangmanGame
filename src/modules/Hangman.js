@@ -10,6 +10,7 @@ export default class Hangman {
     const canvas = getElement("canvas");
     const ctx = canvas.getContext("2d");
 
+    ctx.save()
     ctx.translate(150, 0);
 
     this.drawHanger();
@@ -331,6 +332,14 @@ export default class Hangman {
     ctx.fillRect(227, 140, 50, 5);
   }
 
+  reset(){
+    const canvas = getElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    ctx.clearRect(0, 0, 600, 300)
+    ctx.restore()
+  }
+
   renderWinner(){
     const canvas = getElement("canvas");
     const ctx = canvas.getContext("2d");
@@ -400,5 +409,7 @@ export default class Hangman {
      ctx.rotate((Math.PI / 180) * 135);
      ctx.fillRect(-40, -100, 5, 50);
      ctx.restore();
+
+    //  ctx.translate(300, 0);
   }
 }

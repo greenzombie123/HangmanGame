@@ -82,7 +82,6 @@ export default class Controller {
     this.model.init();
 
     this.view.changeGameButton()
-    this.view.bindOnGameButtonClicked(this.startNewGame)
   }
 
   reset(){
@@ -92,5 +91,6 @@ export default class Controller {
 
   init() {
     this.view.bindOnGameButtonClicked(this.startFirstGame)
+    this.view.bindOnResetButtonClicked(this.startNewGame)
   }
 }

@@ -8,7 +8,9 @@ export default class View {
     this.animatedElement = null;
     this.display = getElement("display");
     this.displayWords = getElement("display__words");
-    this.gameButton = getElement('start-button')
+    this.resetButton = getElement("reset-button");
+    this.startButton = getElement("start-button");
+    this.backDrop = getElement("backdrop");
   }
 
   // Get length of the word
@@ -51,14 +53,21 @@ export default class View {
     });
   };
 
-  bindOnGameButtonClicked = (handler) =>{
-    this.gameButton.addEventListener("click", () => {
+  bindOnGameButtonClicked = (handler) => {
+    this.startButton.addEventListener("click", () => {
       handler();
     });
-  }
+  };
 
-  changeGameButton(){
-    this.gameButton.textContent = "Reset"
+  bindOnResetButtonClicked = (handler) => {
+    this.resetButton.addEventListener("click", () => {
+      handler();
+    });
+  };
+
+  changeGameButton() {
+    this.resetButton.style.display = "block";
+    this.startButton.style.display = "none";
   }
 
   flashRed() {
@@ -114,29 +123,46 @@ export default class View {
   displayGameStatus = (isWinner) => {
     if (isWinner) {
       this.hangman.renderWinner();
-      this.showDisplayer(true)
+      this.showDisplayer(true);
     } else {
-      this.showDisplayer(false)
+      this.showDisplayer(false);
     }
   };
 
   showDisplayer = (isWinner) => {
     if (isWinner) {
-      this.display.classList.toggle('display_winner')
-      this.displayWords.textContent = "Good Job!"
+      this.display.classList.toggle("display_winner");
+      this.displayWords.textContent = "Good Job!";
+      // this.backDrop.classList.toggle("backdrop_open");
+      this.toggleBackDrop(true);
     } else {
-      this.display.classList.toggle('display_loser')
-      this.displayWords.textContent = "Too Bad!"
+      this.display.classList.toggle("display_loser");
+      this.displayWords.textContent = "Too Bad!";
+      // this.backDrop.classList.toggle("backdrop_open");
+      this.toggleBackDrop(true);
     }
   };
+
+  toggleBackDrop(isGameDone) {
+    if (isGameDone) {
+      this.backDrop.classList.toggle("backdrop_open");
+      this.resetButton.classList.toggle("reset-button_flash");
+    }
+    else if(this.backDrop.classList.contains("backdrop_open")){
+      this.backDrop.classList.toggle("backdrop_open");
+      this.resetButton.classList.toggle("reset-button_flash");
+    }
+  }
 
   reset() {
     this.tiles.forEach((tile) => this.tile_container.removeChild(tile));
     this.tiles = [];
     this.animatedElement = null;
-    this.display.classList.remove('display_loser')
-    this.display.classList.remove('display_winner')
-    this.hangman.reset()
+    this.display.classList.remove("display_loser");
+    this.display.classList.remove("display_winner");
+    this.enableAllButtons();
+    this.toggleBackDrop(false)
+    this.hangman.reset();
   }
 
   init() {
