@@ -6,7 +6,7 @@ export default class Controller {
 
   getWord = () => {
     const newWord = this.model.getWord();
-    console.log(newWord);
+    // console.log(newWord);
     this.view.createTiles(newWord);
   };
 
@@ -15,7 +15,6 @@ export default class Controller {
   }
 
   checkWord(word) {
-    console.log(word);
     return this.model.word === word.toLowerCase();
   }
 
@@ -39,12 +38,13 @@ export default class Controller {
 
   guessWord = (word) => {
     if (this.checkWord(word)) {
-      this.view.printWord();
+      // this.view.printWord();
       this.view.flashGreen();
       this.checkWinner(true);
     } else {
       this.view.flashRed();
       this.view.renderBodyPart();
+      this.model.increaseNumOfMistakes();
       this.checkLoser()
     }
   };
@@ -52,6 +52,7 @@ export default class Controller {
   checkWinner(isWordCorrect = false) {
     const { letters } = this.model;
     if (!letters.length || isWordCorrect) {
+      this.view.printWord();
       this.model.setGameStatus(true);
     }
   }
@@ -60,11 +61,16 @@ export default class Controller {
     const { numberOfMistakes, limitOfMistakes } = this.model;
     if (numberOfMistakes === limitOfMistakes) {
       this.model.setGameStatus(false);
+      this.view.printWord();
     }
   }
 
   onGameStatusUpdated = (isWinner) => {
     this.view.displayGameStatus(isWinner)
+  }
+
+  setLimitOfMistakes = (number)=> {
+    this.view.setLimitOfMistakes(number)
   }
 
   startNewGame = () => {
@@ -76,6 +82,7 @@ export default class Controller {
   startFirstGame = () => {
     this.model.bindOnWordRetrieved(this.getWord);
     this.model.bindOnGameStatusUpdated(this.onGameStatusUpdated);
+    this.model.bindOnLimitofMistakesCreated(this.setLimitOfMistakes)
     this.view.bindOnTileButtonsClicked(this.guessLetter);
     this.view.bindOnWordButtonClicked(this.guessWord);
     this.view.init();

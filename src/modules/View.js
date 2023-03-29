@@ -29,6 +29,11 @@ export default class View {
     });
   }
 
+  setLimitOfMistakes = (number) => {
+    this.hangman.limitOfMistakes = number
+    console.log('NUmber of mistakes ' + number);
+  };
+
   printWord() {
     this.tiles.forEach((tile) => {
       tile.textContent = tile.dataset.letter;
@@ -147,8 +152,7 @@ export default class View {
     if (isGameDone) {
       this.backDrop.classList.toggle("backdrop_open");
       this.resetButton.classList.toggle("reset-button_flash");
-    }
-    else if(this.backDrop.classList.contains("backdrop_open")){
+    } else if (this.backDrop.classList.contains("backdrop_open")) {
       this.backDrop.classList.toggle("backdrop_open");
       this.resetButton.classList.toggle("reset-button_flash");
     }
@@ -161,7 +165,7 @@ export default class View {
     this.display.classList.remove("display_loser");
     this.display.classList.remove("display_winner");
     this.enableAllButtons();
-    this.toggleBackDrop(false)
+    this.toggleBackDrop(false);
     this.hangman.reset();
   }
 

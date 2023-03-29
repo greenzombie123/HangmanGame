@@ -14,7 +14,8 @@ export default class Model {
   async fetchWord() {
     this.word = await this.dictionary.fetchWord();
     this.setLetters();
-    console.log(this.letters);
+    this.setLimitofMistakes(this.word);
+    // console.log(this.letters);
     this.onWordRetrieved();
   }
 
@@ -30,6 +31,10 @@ export default class Model {
     this.onGameStatusUpdated = callback;
   }
 
+  bindOnLimitofMistakesCreated(callback){
+    this.limitOfMistakesCreated = callback
+  }
+
   // Insert letters of word into letters prop
   setLetters() {
     for (let index = 0; index < this.word.length; index++) {
@@ -38,8 +43,12 @@ export default class Model {
   }
 
   // Set number of mistakes
-  setLimitofMistakes(number) {
-    this.limitOfMistakes = number;
+  setLimitofMistakes({length}) {
+    let numOfMistake = length * 2
+    if(numOfMistake > 20)numOfMistake = 20
+    this.limitOfMistakes = numOfMistake;
+
+    this.limitOfMistakesCreated(this.limitOfMistakes)
   }
 
   increaseNumOfMistakes() {
@@ -49,7 +58,6 @@ export default class Model {
   // Remove a letter from letters prop
   removeLetter(letter) {
     this.letters = this.letters.filter((item) => item !== letter);
-    console.log(this.letters);
   }
 
   // Set value to gameStatus prop
@@ -60,7 +68,6 @@ export default class Model {
   }
 
   init() {
-    this.setLimitofMistakes(6);
     this.fetchWord();
   }
 

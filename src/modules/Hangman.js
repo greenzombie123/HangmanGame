@@ -2,7 +2,8 @@ import { getElement } from "./Helpers";
 
 export default class Hangman {
   constructor() {
-    this.numOfBodyParts = 0;
+    this.numberOfMistakes = 0;
+    this.limitOfMistakes = 0;
   }
 
   // h 300 w 600
@@ -17,24 +18,24 @@ export default class Hangman {
   }
 
   drawBodyPart() {
-    this.numOfBodyParts += 1;
-    switch (this.numOfBodyParts) {
-      case 1:
+    this.numberOfMistakes += 1;
+    switch (this.numberOfMistakes) {
+      case Math.floor((1/6) * this.limitOfMistakes):
         this.animateHead()
         break;
-      case 2:
+      case Math.floor((2/6) * this.limitOfMistakes):
         this.animateBody()
         break;
-      case 3:
+      case Math.floor((3/6) * this.limitOfMistakes):
         this.animateLeftLeg()
         break;
-      case 4:
+      case Math.floor((4/6) * this.limitOfMistakes):
         this.animateRightLeg()
         break;
-      case 5:
+      case Math.floor((5/6) * this.limitOfMistakes):
         this.animateLeftArm()
         break;
-      case 6:
+      case this.limitOfMistakes:
         this.animateRightArm()
         break;
       default:
@@ -339,7 +340,7 @@ export default class Hangman {
     ctx.clearRect(0, 0, 600, 300)
     ctx.restore()
 
-    this.numOfBodyParts = 0
+    this.numberOfMistakes = 0
   }
 
   renderWinner(){
