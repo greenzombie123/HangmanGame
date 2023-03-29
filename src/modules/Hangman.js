@@ -230,7 +230,7 @@ export default class Hangman {
 
       // Left Leg
       ctx.save();
-      ctx.fillStyle = "blue";
+      ctx.fillStyle = "black";
       ctx.translate(224.5, 195);
       ctx.rotate((Math.PI / 180) * 135);
       ctx.fillRect(-23, start, 5, 50);
@@ -338,11 +338,16 @@ export default class Hangman {
 
     ctx.clearRect(0, 0, 600, 300)
     ctx.restore()
+
+    this.numOfBodyParts = 0
   }
 
   renderWinner(){
     const canvas = getElement("canvas");
     const ctx = canvas.getContext("2d");
+
+    ctx.clearRect(0, 0, 600, 300)
+    this.drawHanger()
 
     ctx.translate(-100, 0);
 
