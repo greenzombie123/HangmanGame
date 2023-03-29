@@ -8,6 +8,7 @@ export default class View {
     this.animatedElement = null;
     this.display = getElement("display");
     this.displayWords = getElement("display__words");
+    this.gameButton = getElement('start-button')
   }
 
   // Get length of the word
@@ -49,6 +50,16 @@ export default class View {
       handler(input.value);
     });
   };
+
+  bindOnGameButtonClicked = (handler) =>{
+    this.gameButton.addEventListener("click", () => {
+      handler();
+    });
+  }
+
+  changeGameButton(){
+    this.gameButton.textContent = "Reset"
+  }
 
   flashRed() {
     if (this.animatedElement) {
@@ -125,6 +136,7 @@ export default class View {
     this.animatedElement = null;
     this.display.classList.remove('display_loser')
     this.display.classList.remove('display_winner')
+    this.hangman.reset()
   }
 
   init() {

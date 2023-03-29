@@ -67,14 +67,30 @@ export default class Controller {
     this.view.displayGameStatus(isWinner)
   }
 
-  startNewGame() {}
+  startNewGame = () => {
+    this.reset()
+    this.model.init();
+    this.view.init();
+  }
 
-  init() {
+  startFirstGame = () => {
     this.model.bindOnWordRetrieved(this.getWord);
     this.model.bindOnGameStatusUpdated(this.onGameStatusUpdated);
     this.view.bindOnTileButtonsClicked(this.guessLetter);
     this.view.bindOnWordButtonClicked(this.guessWord);
     this.view.init();
     this.model.init();
+
+    this.view.changeGameButton()
+    this.view.bindOnGameButtonClicked(this.startNewGame)
+  }
+
+  reset(){
+    this.model.reset()
+    this.view.reset()
+  }
+
+  init() {
+    this.view.bindOnGameButtonClicked(this.startFirstGame)
   }
 }
