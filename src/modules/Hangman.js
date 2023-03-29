@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import { getElement } from "./Helpers";
 
 export default class Hangman {
@@ -404,4 +402,3 @@ export default class Hangman {
      ctx.restore();
   }
 }
->>>>>>> parent of 626dadf (Add display functionality v2)
