@@ -1,7 +1,7 @@
 # Hangman App
 This is a game called Hangman 
 
-/src/assets/shotss.png
+/home/gunmadude/repos/OdinProjects/HangmanGame/src/assets/shotss.png
 
 Goal
 The goal of this project is to create program that using asycronous programming and an API. In this case, I used the Random Word API from API Ninjas. 
