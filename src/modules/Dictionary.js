@@ -25,4 +25,3 @@ export default {
   fetchWord,
 };
 
-//API JuKv+yCXS1ZGMowd97AwEg==TByOU3LN70assN1k
